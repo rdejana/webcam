@@ -6,15 +6,16 @@ import numpy as np
 from .camera_base import CameraBase
 
 
-class OpenCvGstCamera(CameraBase):
+class OpenCvUsbCamera(CameraBase):
     value = traitlets.Any()
 
     # config
-    width = traitlets.Integer(default_value=224).tag(config=True)
-    height = traitlets.Integer(default_value=224).tag(config=True)
+    sensor_id = traitlets.Integer(default_value=2).tag(config=True)
+    width = traitlets.Integer(default_value=320).tag(config=True)
+    height = traitlets.Integer(default_value=180).tag(config=True)
     fps = traitlets.Integer(default_value=30).tag(config=True)
-    capture_width = traitlets.Integer(default_value=816).tag(config=True)
-    capture_height = traitlets.Integer(default_value=616).tag(config=True)
+    capture_width = traitlets.Integer(default_value=1280).tag(config=True)
+    capture_height = traitlets.Integer(default_value=720).tag(config=True)
 
     def __init__(self, *args, **kwargs):
         self.value = np.empty((self.height, self.width, 3), dtype=np.uint8)
@@ -46,8 +47,10 @@ class OpenCvGstCamera(CameraBase):
                 break
 
     def _gst_str(self):
-        return 'nvarguscamerasrc sensor-mode=3 ! video/x-raw(memory:NVMM), width=%d, height=%d, format=(string)NV12, framerate=(fraction)%d/1 ! nvvidconv ! video/x-raw, width=(int)%d, height=(int)%d, format=(string)BGRx ! videoconvert ! appsink' % (
-            self.capture_width, self.capture_height, self.fps, self.width, self.height)
+       return 'v4l2src device=/dev/video%d ! video/x-raw, width=(int)%d, height=(int)%d, framerate=(fraction)%d/1 ! videoconvert ! videoscale ! video/x-raw, width=(int)%d, height=(int)%d ! appsink' % (
+           self.sensor_id,self.capture_width,self.capture_height,self.fps,self.width,self.height)
+       # return 'nvarguscamerasrc sensor-mode=3 ! video/x-raw(memory:NVMM), width=%d, height=%d, format=(string)NV12, framerate=(fraction)%d/1 ! nvvidconv ! video/x-raw, width=(int)%d, height=(int)%d, format=(string)BGRx ! videoconvert ! appsink' % (
+       #     self.capture_width, self.capture_height, self.fps, self.width, self.height)
 
     def start(self):
         if not self.cap.isOpened():
@@ -68,4 +71,4 @@ class OpenCvGstCamera(CameraBase):
 
     @staticmethod
     def instance(*args, **kwargs):
-        return OpenCvGstCamera(*args, **kwargs)
+        return OpenCvUsbCamera(*args, **kwargs)
