@@ -10,6 +10,7 @@ This hsa been tested on a VM running Ubuntu 22.04 using the host's (MacBook Pro)
 ### Install OS packages
 You'll need to run the following commands as `root` to install necessary packages:
 - apt update
+- apt upgrade -y
 - apt install -y python3-dev python3-pip  python3-opencv vim-tiny  libopencv-dev git
 - apt install -y nodejs libffi-dev npm libwayland-egl1 gstreamer1.0-plugins-bad libgstreamer-plugins-bad1.0-0 gstreamer1.0-plugins-good python3-gst-1.0
 - pip3 install Cython
