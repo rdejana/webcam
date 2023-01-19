@@ -10,7 +10,7 @@ class OpenCvUsbCamera(CameraBase):
     value = traitlets.Any()
 
     # config
-    sensor_id = traitlets.Integer(default_value=2).tag(config=True)
+    sensor_id = traitlets.Integer(default_value=0).tag(config=True)
     width = traitlets.Integer(default_value=320).tag(config=True)
     height = traitlets.Integer(default_value=180).tag(config=True)
     fps = traitlets.Integer(default_value=30).tag(config=True)
