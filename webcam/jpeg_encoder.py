@@ -21,8 +21,8 @@ class JpegEncoder(object):
         )
 
         GST_STRING = 'appsrc name=src emit-signals=True is-live=True caps=video/x-raw,format=BGR,width={width},height={height},framerate={fps}/1 !' \
-                     ' nvjpegenc ' \
-                     '! image/jpeg,width={width},height={height},framerate={fps}/1 !' \
+                     ' jpegenc ' \
+                     '! width={width},height={height},framerate={fps}/1 !' \
                      ' appsink name=sink'.format(
             width=width,
             height=height,
