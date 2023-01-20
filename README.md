@@ -24,11 +24,11 @@ It should work with other USB cameras, but more testing will be needed.
 You'll need to run the following commands as `root` to install necessary packages:
 - apt update
 - apt upgrade -y
-- apt install -y python3-dev python3-pip  python3-opencv vim-tiny  libopencv-dev git
+- apt install -y python3-dev python3-pip  python3-opencv vim-tiny  libopencv-dev git nodejs npm
 - apt install -y nodejs libffi-dev npm libwayland-egl1 gstreamer1.0-plugins-bad libgstreamer-plugins-bad1.0-0 gstreamer1.0-plugins-good python3-gst-1.0
 - pip3 install Cython
 - pip3 install numpy
-- pip3 install jupyter jupyterlab nodejs npm
+- pip3 install jupyter jupyterlab
 - jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
 Once complete, you may use a `normal` user.
