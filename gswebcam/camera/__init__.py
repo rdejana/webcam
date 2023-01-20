@@ -1,2 +1,2 @@
-from .opencv_gst_usb_camera import OpenCvUsbCamera
+from .opencv_gs_usb_camera import OpenCvUsbCamera
 Camera = OpenCvUsbCamera

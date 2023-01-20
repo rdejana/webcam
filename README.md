@@ -3,7 +3,18 @@ This repository provides an example of how to use a USB camera inside a Jupyter 
 
 It is built from NVIDIA's (Jetbot)[https://github.com/NVIDIA-AI-IOT/jetbot].  
 
-# Running natively
+Currently, there are 2 approaches:
+- GStream based approach using v4l2src to read from the camera. Can do a bit more, but more complicated as a result.
+- Simple OpenCV approach using cv2.VideoCapture(deviceId).  Simple, but maybe not as powerful
+
+The notebook gs_camera.ipynb leverages the GStream approach while camera.ipynb using the pure OpenCV approach.
+
+If you are running in a non-linux environment, you'll most likely want to install OpenCV via the python module:
+```
+pip3 install opencv-python`
+```
+
+# Running natively on Linux
 This hsa been tested on a VM running Ubuntu 22.04 using the host's (MacBook Pro) integrated camera.  
 It should work with other USB cameras, but more testing will be needed.  
 
@@ -41,7 +52,7 @@ If you would like to surpress any OpenCV related messages, run the following bef
 export OPENCV_LOG_LEVEL=OFF
 ```
 
-Open the notebook `camera.ipynb`.
+Open the notebook of your choice.
 
 
 # Running in Docker
@@ -65,4 +76,4 @@ where `deviceId` is the device number of your camera, e.g. 0 and `<imageName>` i
 
 Open a browser login into your jupyter instance, the password is `demo` by default.
 
-Open the notebook `camera.ipynb`.
+Open the notebook of your choice.
