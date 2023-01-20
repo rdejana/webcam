@@ -1,5 +1,7 @@
 FROM ubuntu
 ENV DEBIAN_FRONTEND noninteractive
+## turn off OPENCV Logs.  Override if needed
+ENV OPENCV_LOG_LEVEL OFF
 # basic stuff first
 RUN apt update && apt upgrade -y
 RUN apt install -y python3-dev python3-pip  python3-opencv vim-tiny  libopencv-dev git \

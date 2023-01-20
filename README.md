@@ -34,6 +34,11 @@ jupyter lab --ip 0.0.0.0 --port 8888
 ```
 Open a browser login into your jupyter instance.
 
+If you would like to surpress any OpenCV related messages, run the following before starting jupyter:
+```angular2html
+export OPENCV_LOG_LEVEL=OFF
+```
+
 Open the notebook `camera.ipynb`.
 
 
