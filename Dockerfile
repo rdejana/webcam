@@ -14,8 +14,9 @@ RUN jupyter lab --generate-config
 RUN python3 -c "from notebook.auth.security import set_password; set_password('demo', '/root/.jupyter/jupyter_notebook_config.json')"
 
 WORKDIR /data
-
+COPY gswebcam ./gswebcam/
 COPY webcam ./webcam/
+COPY gs_camera.ipynb camera.ipynb
 COPY camera.ipynb camera.ipynb
 
 

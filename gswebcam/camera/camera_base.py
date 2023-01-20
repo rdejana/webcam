@@ -17,8 +17,23 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 
-import enum
-import cv2
+import traitlets
+import os
 
-def bgr8_to_jpeg(value, quality=75):
-    return bytes(cv2.imencode('.jpg', value)[1])
+
+class CameraBase(traitlets.HasTraits):
+    value = traitlets.Any()
+
+    @staticmethod
+    def instance(*args, **kwargs):
+        raise NotImplementedError
+
+    def widget(self):
+        if hasattr(self, '_widget'):
+            return self._widget  # cache widget, so we don't duplicate links
+        from ipywidgets import Image
+        from webcam.image import bgr8_to_jpeg
+        image = Image()
+        traitlets.dlink((self, 'value'), (image, 'value'), transform=bgr8_to_jpeg)
+        self._widget = image
+        return image

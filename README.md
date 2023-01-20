@@ -1,10 +1,11 @@
 # webcam
-This repository provides an example of how to use camera inside a Jupyter notebook. 
+This repository provides an example of how to use a USB camera inside a Jupyter notebook. 
 
 It is built from NVIDIA's (Jetbot)[https://github.com/NVIDIA-AI-IOT/jetbot].  
 
 # Running natively
-This hsa been tested on a VM running Ubuntu 22.04 using the host's (MacBook Pro) integrated camera.
+This hsa been tested on a VM running Ubuntu 22.04 using the host's (MacBook Pro) integrated camera.  
+It should work with other USB cameras, but more testing will be needed.  
 
 ## Setup 
 
