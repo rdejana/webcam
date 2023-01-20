@@ -1,7 +1,7 @@
 # webcam
 This repository provides an example of how to use a USB camera inside a Jupyter notebook. 
 
-It is built from NVIDIA's (Jetbot)[https://github.com/NVIDIA-AI-IOT/jetbot].  
+It is built from NVIDIA's [Jetbot](https://github.com/NVIDIA-AI-IOT/jetbot).  
 
 Currently, there are 2 approaches:
 - GStream based approach using v4l2src to read from the camera. Can do a bit more, but more complicated as a result.
