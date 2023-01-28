@@ -29,7 +29,8 @@ You'll need to run the following commands as `root` to install necessary package
 - pip3 install Cython
 - pip3 install numpy
 - pip3 install jupyter jupyterlab
-- jupyter labextension install @jupyter-widgets/jupyterlab-manager
+- pip3 install ipywidgets
+- # jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
 Once complete, you may use a `normal` user.
 
@@ -48,7 +49,7 @@ jupyter lab --ip 0.0.0.0 --port 8888
 Open a browser login into your jupyter instance.
 
 If you would like to surpress any OpenCV related messages, run the following before starting jupyter:
-```angular2html
+```
 export OPENCV_LOG_LEVEL=OFF
 ```
 
