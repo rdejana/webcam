@@ -68,8 +68,8 @@ class OpenCvGstPiCamera(CameraBase):
                 break
 
     def _gst_str(self):
-       return 'v4l2src device=/dev/video%d ! video/x-raw, width=(int)%d, height=(int)%d, framerate=(fraction)%d/1 ! videoconvert ! videoscale ! video/x-raw, width=(int)%d, height=(int)%d ! appsink' % (
-           self.sensor_id,self.capture_width,self.capture_height,self.fps,self.width,self.height)
+       return 'libcamerasrc ! video/x-raw, width=(int)%d, height=(int)%d, format=NV12, framerate=(fraction)%d/1 ! videoconvert ! videoscale ! video/x-raw, width=(int)%d, height=(int)%d ! appsink' % (
+           self.capture_width,self.capture_height,self.fps,self.width,self.height)
        # return 'nvarguscamerasrc sensor-mode=3 ! video/x-raw(memory:NVMM), width=%d, height=%d, format=(string)NV12, framerate=(fraction)%d/1 ! nvvidconv ! video/x-raw, width=(int)%d, height=(int)%d, format=(string)BGRx ! videoconvert ! appsink' % (
        #     self.capture_width, self.capture_height, self.fps, self.width, self.height)
 
